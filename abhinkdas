@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abhin K Das - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --secondary: #1e40af;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+        }
+
+        body {
+            background-color: #f1f5f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            margin-right: 2rem;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile-info h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-info .title {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            transition: background-color 0.3s;
+        }
+
+        .contact-info a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Main Content */
+        .main-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        .card h2 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .card h2 i {
+            color: var(--secondary);
+        }
+
+        /* Summary Section */
+        .summary p {
+            font-size: 1.1rem;
+            color: var(--dark);
+        }
+
+        /* Technical Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-category {
+            background-color: var(--light);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+        }
+
+        .skill-category h3 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+
+        .skill-category ul {
+            list-style-type: none;
+            padding-left: 0.5rem;
+        }
+
+        .skill-category li {
+            margin-bottom: 0.3rem;
+            color: var(--dark);
+        }
+
+        /* Projects */
+        .project {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        .project:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        .project-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+        }
+
+        .project-description {
+            color: var(--dark);
+        }
+
+        /* Education */
+        .education-item {
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 3px solid var(--light-gray);
+        }
+
+        .education-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .education-degree {
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .education-institution {
+            color: var(--primary);
+            font-weight: 500;
+            margin: 0.3rem 0;
+        }
+
+        .education-period {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Soft Skills */
+        .soft-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .soft-skill {
+            background-color: var(--light);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--secondary);
+            border: 1px solid var(--light-gray);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .profile-section {
+                flex-direction: column;
+                margin-bottom: 1.5rem;
+            }
+
+            .profile-img {
+                margin-right: 0;
+                margin-bottom: 1.5rem;
+            }
+
+            .contact-info {
+                justify-content: center;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section with Profile -->
+    <header>
+        <div class="container header-content">
+            <div class="profile-section">
+                <img src="https://i.ibb.co/v6xB4BFd/Abhin-KDas.jpg" alt="Abhin K Das" class="profile-img">
+                <div class="profile-info">
+                    <h1>Abhin K Das</h1>
+                    <p class="title">Entry-level Software Developer & BCA Student</p>
+                    <div class="contact-info">
+                        <a href="tel:+919037009130">
+                            <i class="fas fa-phone"></i> +91 9037009130
+                        </a>
+                        <a href="mailto:abhinkdas43@gmail.com">
+                            <i class="fas fa-envelope"></i> abhinkdas43@gmail.com
+                        </a>
+                        <a href="https://linkedin.com/in/abhin-k-das-7655b8379" target="_blank">
+                            <i class="fab fa-linkedin"></i> LinkedIn
+                        </a>
+                        <a href="https://github.com/abhinkdas43-code" target="_blank">
+                            <i class="fab fa-github"></i> GitHub
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="main-content">
+            <!-- Left Column -->
+            <div class="left-column">
+                <!-- Summary Section -->
+                <section class="card summary">
+                    <h2><i class="fas fa-user"></i> SUMMARY</h2>
+                    <p>Entry-level software developer and BCA student with strong computer science fundamentals and hands-on experience in Python, Java, web development, and database-backed applications. Skilled in writing clean, maintainable code, understanding existing codebases, and collaborating effectively in team environments. Highly motivated to learn, adapt to feedback, and grow under mentorship in an agile software development setting.</p>
+                </section>
+
+                <!-- Projects Section -->
+                <section class="card">
+                    <h2><i class="fas fa-code"></i> PROJECTS</h2>
+                    <div class="project">
+                        <div class="project-header">
+                            <h3 class="project-title">Online Medical Store</h3>
+                            <a href="https://github.com" class="project-link" target="_blank">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                        <ul class="project-description">
+                            <li>Developed a web-based application for browsing and purchasing medicines</li>
+                            <li>Implemented user authentication and product management features</li>
+                            <li>Used PHP and SQL for backend logic and database operations</li>
+                            <li>Applied Git for version control and followed clean coding practices</li>
+                        </ul>
+                    </div>
+                </section>
+
+                <!-- Education Section -->
+                <section class="card">
+                    <h2><i class="fas fa-graduation-cap"></i> EDUCATION</h2>
+                    <div class="education-item">
+                        <p class="education-degree">Bachelor of Computer Applications (BCA)</p>
+                        <p class="education-institution">MG University</p>
+                        <p class="education-period">2023 – Present</p>
+                    </div>
+                    <div class="education-item">
+                        <p class="education-degree">Higher Secondary (Science)</p>
+                        <p class="education-institution">GHSS Pampakuda</p>
+                        <p class="education-period">2021 - 2023</p>
+                    </div>
+                    <div class="education-item">
+                        <p class="education-degree">SSLC</p>
+                        <p class="education-institution">Bappuji English Medium School</p>
+                        <p class="education-period">2020 - 2021</p>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Right Column -->
+            <div class="right-column">
+                <!-- Technical Skills -->
+                <section class="card">
+                    <h2><i class="fas fa-tools"></i> TECHNICAL SKILLS</h2>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h3>Programming Languages</h3>
+                            <ul>
+                                <li>Python</li>
+                                <li>Java</li>
+                                <li>C</li>
+                                <li>C++</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Web Technologies</h3>
+                            <ul>
+                                <li>HTML</li>
+                                <li>CSS</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Backend & Database</h3>
+                            <ul>
+                                <li>PHP (Basics)</li>
+                                <li>MySQL (Basics)</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Concepts</h3>
+                            <ul>
+                                <li>OOP</li>
+                                <li>Data Structures & Algorithms (Basics)</li>
+                                <li>Debugging</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Tools</h3>
+                            <ul>
+                                <li>GitHub</li>
+                                <li>VS Code</li>
+                            </ul>
+                        </div>
+                        <div class="skill-category">
+                            <h3>Development Practices</h3>
+                            <ul>
+                                <li>Basic unit testing concepts</li>
+                                <li>Clean code principles</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Soft Skills -->
+                <section class="card">
+                    <h2><i class="fas fa-users"></i> SOFT SKILLS</h2>
+                    <div class="soft-skills">
+                        <span class="soft-skill">Problem Solving</span>
+                        <span class="soft-skill">Team Collaboration</span>
+                        <span class="soft-skill">Communication</span>
+                        <span class="soft-skill">Adaptability</span>
+                        <span class="soft-skill">Continuous Learning</span>
+                        <span class="soft-skill">Analytical Thinking</span>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Abhin K Das. All rights reserved.</p>
+            <p>Portfolio | Designed with HTML & CSS</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation for skill cards on hover
+        document.querySelectorAll('.skill-category').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'scale(1.02)';
+                this.style.transition = 'transform 0.2s';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
